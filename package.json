@@ -1,0 +1,22 @@
+{
+  "name": "hark-9router",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bulk-create hark.com accounts, capture session cookies, and pool them into 9Router as one OpenAI-compatible provider.",
+  "bin": {
+    "hark-bulk": "./bulk.js",
+    "hark-adapter": "./adapter.js",
+    "hark-connect": "./connect-9router.js",
+    "hark-selftest": "./selftest.js"
+  },
+  "scripts": {
+    "bulk": "node bulk.js",
+    "adapter": "node adapter.js",
+    "connect": "node connect-9router.js",
+    "test": "node selftest.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

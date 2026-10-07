@@ -1,0 +1,46 @@
+[
+  {
+    "email": "hark1a30c14b@maxxspace.com",
+    "password": "<redacted>",
+    "userId": "f1YzMwaDe3DQTFGVflW6Bc1xySlUYtpP",
+    "sessionToken": "TlsyZ7aR...",
+    "sessionId": "QFpj6F12gweLsFxfkt7vtOVc5Z90akP6",
+    "expiresAt": "2026-11-06T11:13:11.077Z",
+    "cookies": {
+      "__Secure-hark.session_token": "<redacted>",
+      "__Secure-hark.region": "<redacted>",
+      "__Secure-hark.access": "<redacted>"
+    },
+    "cookieHeader": "<redacted>",
+    "mailbox": {
+      "address": "hark1a30c14b@maxxspace.com",
+      "password": "<redacted>",
+      "token": "<redacted>"
+    },
+    "birthday": "1995-06-15",
+    "region": "us",
+    "createdAt": "2026-10-07T11:13:11.976Z"
+  },
+  {
+    "email": "hark0c8167ef@maxxspace.com",
+    "password": "<redacted>",
+    "userId": "7TR7vtNE3STPf4fiNS8kmCIo3X3Jn3Rn",
+    "sessionToken": "OaqhblcF...",
+    "sessionId": "FFPCZmwFcYADE4DS9fmj72DuIkcaCnID",
+    "expiresAt": "2026-11-06T11:14:16.299Z",
+    "cookies": {
+      "__Secure-hark.session_token": "<redacted>",
+      "__Secure-hark.region": "<redacted>",
+      "__Secure-hark.access": "<redacted>"
+    },
+    "cookieHeader": "<redacted>",
+    "mailbox": {
+      "address": "hark0c8167ef@maxxspace.com",
+      "password": "<redacted>",
+      "token": "<redacted>"
+    },
+    "birthday": "1995-06-15",
+    "region": "us",
+    "createdAt": "2026-10-07T11:14:17.112Z"
+  }
+]

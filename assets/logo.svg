@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="hark-pool logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#1b2450"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6ea8fe"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a5c8ff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="509" height="509" rx="114.5" fill="none" stroke="#2a3566" stroke-width="3"/>
+
+  <!-- pool funnel: many -> one -->
+  <g filter="url(#glow)">
+    <!-- incoming streams -->
+    <g stroke="url(#ring)" stroke-width="7" stroke-linecap="round" fill="none" opacity=".95">
+      <path d="M120 150 L226 236"/>
+      <path d="M196 118 L238 224"/>
+      <path d="M316 118 L274 224"/>
+      <path d="M392 150 L286 236"/>
+      <path d="M110 236 L222 256"/>
+      <path d="M402 236 L290 256"/>
+    </g>
+    <!-- pool ring -->
+    <circle cx="256" cy="256" r="86" fill="none" stroke="url(#ring)" stroke-width="14"/>
+  </g>
+
+  <!-- outgoing beam (single endpoint) -->
+  <path d="M256 342 L256 420" stroke="url(#beam)" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- core node -->
+  <circle cx="256" cy="256" r="34" fill="#0b1020" stroke="#a5c8ff" stroke-width="6"/>
+  <circle cx="256" cy="256" r="13" fill="#6ea8fe"/>
+
+  <!-- source dots -->
+  <g fill="#a5c8ff">
+    <circle cx="120" cy="150" r="15"/>
+    <circle cx="196" cy="118" r="15"/>
+    <circle cx="316" cy="118" r="15"/>
+    <circle cx="392" cy="150" r="15"/>
+    <circle cx="110" cy="236" r="13"/>
+    <circle cx="402" cy="236" r="13"/>
+  </g>
+</svg>
