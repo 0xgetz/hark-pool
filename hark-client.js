@@ -21,6 +21,15 @@ function uuid() {
   });
 }
 
+// Drop a trailing onboarding question ("And what should I call you?") that Hark appends
+// to the model's first answer on a brand-new account.
+function stripOnboarding(text) {
+  return text
+    .replace(/\s*(And\s+)?what should I call you\?\s*$/i, "")
+    .replace(/\s*What(?:'s| is) your name\?\s*$/i, "")
+    .trim();
+}
+
 export class HarkClient {
   constructor(account, { timeoutMs = 180000, pollMs = 2500 } = {}) {
     this.account = account;
@@ -84,15 +93,33 @@ export class HarkClient {
     return this.conversationId;
   }
 
-  // Fresh accounts start in a guided onboarding ("What should I call you?").
-  // Close the onboarding tail so prompts go straight to the model.
+  // Close the guided onboarding ("What should I call you?") so prompts reach the model.
+  // We first answer the pending name prompt (if any), then close the onboarding tail.
   async closeOnboarding() {
     const cid = this.conversationId;
     if (!cid) return;
+    const h = await this.history().catch(() => ({ messages: [] }));
+    const pending = (h.messages || []).find(
+      (m) => m.role === "assistant" && m.onboarding?.awaitsReply
+    );
+    if (pending) {
+      await this.api("/api/messages/send", {
+        method: "POST",
+        query: { cid },
+        body: {
+          timezone: "America/New_York",
+          message: "Hark User",
+          idempotencyKey: uuid(),
+          responseMessageId: uuid(),
+          conversationId: cid,
+        },
+      }).catch(() => {});
+      await sleep(2500);
+    }
     return this.api("/api/conversations/onboarding/close-tail", {
       method: "POST",
       body: { conversationId: cid },
-    });
+    }).catch(() => {});
   }
 
   async history() {
@@ -151,7 +178,7 @@ export class HarkClient {
           }
           continue;
         }
-        if (m.source === "send_bubble") return m.content.trim();
+        if (m.source === "send_bubble") return stripOnboarding(m.content.trim());
       }
     }
     throw new Error("timed out waiting for the Hark reply");
